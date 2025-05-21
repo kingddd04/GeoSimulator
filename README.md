@@ -3,6 +3,7 @@
 <img src="src/sprites/GeoSimulatorIcon.png" alt="GeoSimulator Icon" align="right" width="120"/>
 
 **GeoSimulator** is a Java desktop application for procedurally generating and simulating 2D planetary surfaces. With a focus on performance and scalability, GeoSimulator can effortlessly generate planets up to the size of Earth (40,000 km circumference) with no disk or memory storage for the world data — every chunk is generated on the fly!
+The project is inspired to Simplerockets an old game by Jundroo, released around 2010 where you could build and launch rockets in a realistically sized solar system, i loved it. https://store.steampowered.com/app/343090/SimpleRockets/
 
 ---
 
@@ -37,9 +38,9 @@
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="src/sprites/screen1.png" alt="Rocky Planet" width="130"/>
-  <img src="src/sprites/screen2.png" alt="Desert Planet" width="130"/>
-  <img src="src/sprites/screen3.png" alt="Volcanic Planet" width="130"/>
+  <img src="src/sprites/screen1.png" alt="Rocky Planet" width="256"/>
+  <img src="src/sprites/screen2.png" alt="Desert Planet" width="256"/>
+  <img src="src/sprites/screen3.png" alt="Volcanic Planet" width="256"/>
 </p>
 
 ---
@@ -51,49 +52,15 @@
 - ☕ Java 11 or higher (requires `java.desktop` module)
 - 🖥️ Compatible with Windows, macOS, Linux
 
-### Build & Run
+### How to Run
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/kingddd04/GeoSimulator.git
-   cd GeoSimulator
-   ```
+- **Download source code:**
+  Download the source code in a new java project and boot the "main" function.
 
-2. **Compile the source:**
-   ```sh
-   javac -d out src/scripts/*.java
-   ```
-
-3. **Run the application:**
-   ```sh
-   java -cp out scripts.Main
-   ```
-
----
-
-## 🕹️ Usage
-
-1. On launch, select a planet type by clicking its icon.
-2. Enter the planet's circumference in kilometers (e.g., 40000 for Earth).
-3. Enter a numeric seed for world generation (any integer).
-4. Click **Generate Planet!** to create and explore your new world.
-
-> **Note:** The application does not save worlds to disk. Each session is uniquely generated based on your inputs.
-
----
-
-## 📁 Project Structure
-
-```
-src/
-  scripts/
-    Main.java                # Entry point
-    MainMenuGUI.java         # Main menu GUI
-    PlanetGenerationManager.java # Core planet generation logic
-    PlanetarySimulatorGUI.java   # 2D simulator panel
-  sprites/                   # Planet & UI images
-  module-info.java           # Java module definition
-```
+- **Download your favourite executable file:**
+  From releases you can download the exe file or the jar file.
+  The exe can be executed direcly but the jar will need a compatible version installed
+  
 
 ---
 
@@ -110,5 +77,3 @@ MIT License
 © 2025 kingddd04
 
 ---
-
-> **GeoSimulator** — Procedural, limitless worlds at your fingertips! 🚀🌌
