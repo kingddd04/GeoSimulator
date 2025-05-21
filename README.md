@@ -37,11 +37,9 @@
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="src/sprites/RockyPlanet.png" alt="Rocky Planet" width="130"/>
-  <img src="src/sprites/DesertPlanet.png" alt="Desert Planet" width="130"/>
-  <img src="src/sprites/VolcanicPlanet.png" alt="Volcanic Planet" width="130"/>
-  <img src="src/sprites/GardenPlanet.png" alt="Garden Planet" width="130"/>
-  <img src="src/sprites/IcyPlanet.png" alt="Icy Planet" width="130"/>
+  <img src="src/sprites/screen1.png" alt="Rocky Planet" width="130"/>
+  <img src="src/sprites/screen2.png" alt="Desert Planet" width="130"/>
+  <img src="src/sprites/screen3.png" alt="Volcanic Planet" width="130"/>
 </p>
 
 ---
