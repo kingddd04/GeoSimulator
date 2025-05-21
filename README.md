@@ -54,10 +54,10 @@ The project is inspired to Simplerockets an old game by Jundroo, released around
 
 ### How to Run
 
-- **Download source code:**
+- **Option one Download source code:**
   Download the source code in a new java project and boot the "main" function.
 
-- **Download your favourite executable file:**
+- **Option two Download your favourite executable file:**
   From releases you can download the exe file or the jar file.
   The exe can be executed direcly but the jar will need a compatible version installed
   
