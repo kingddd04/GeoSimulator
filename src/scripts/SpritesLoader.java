@@ -1,116 +1,160 @@
 package scripts;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
+/**
+ * The {@code SpritesLoader} class is responsible for loading and managing sprite images
+ * for different planet types in the GeoSimulator application.
+ * <p>
+ * Depending on the planet type passed to the constructor, an appropriate tileset of images is loaded.
+ * These images include the sky, surface, crust, and bedrock tiles. The images are loaded as resources
+ * using the class loader, making them accessible within packaged applications such as JARs or EXEs.
+ * </p>
+ * <p>
+ * Planet Type Identifiers:
+ * <ul>
+ *   <li>1 - Rocky Planet</li>
+ *   <li>2 - Desert Planet</li>
+ *   <li>3 - Volcanic Planet</li>
+ *   <li>4 - Garden Planet</li>
+ *   <li>5 - Icy Planet</li>
+ * </ul>
+ * </p>
+ * 
+ * @author Davide Di Stefano
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class SpritesLoader {
-	private Image skyTileImage;
-	private Image surfaceTileImage;
-	private Image crustTileImage;
-	private Image bedrockTileImage;
-	private Image[] tilesImages;
 	
-	public SpritesLoader(int planetTypeIds) {
-		switch (planetTypeIds) {
-		case 1:
-			rockyPlanetTilesetCreator();
-			break;
-		case 2:
-			desertPlanetTilesetCreator();
-			break;
-		case 3:
-			volcanicPlanetTilesetCreator();
-			break;
-		case 4:
-			gardenPlanetTilesetCreator();
-			break;
-		case 5:
-			icyPlanetTilesetCreator();
-			break;
-		}
-		 tilesImages = new Image[]{skyTileImage, surfaceTileImage, crustTileImage, bedrockTileImage};
-	}
-	
-	public void rockyPlanetTilesetCreator() {
-		try {
-			skyTileImage = ImageIO.read(new File("src/sprites/RockySkyTile.png"));
-			surfaceTileImage = ImageIO.read(new File("src/sprites/RockySurfaceTile.png"));
-			crustTileImage =  ImageIO.read(new File("src/sprites/RockyCrustTile.png"));
-			bedrockTileImage = ImageIO.read(new File("src/sprites/BedrockTile.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    private Image skyTileImage;  // 
+    private Image surfaceTileImage;
+    private Image crustTileImage;
+    private Image bedrockTileImage;
+    private Image[] tilesImages;
 
-	public void desertPlanetTilesetCreator() {
-		try {
-			skyTileImage = ImageIO.read(new File("src/sprites/DesertSkyTile.png"));
-			surfaceTileImage = ImageIO.read(new File("src/sprites/DesertSurfaceTile.png"));
-			crustTileImage =  ImageIO.read(new File("src/sprites/DesertCrustTile.png"));
-			bedrockTileImage = ImageIO.read(new File("src/sprites/BedrockTile.png"));
+    /**
+     * Constructs a new {@code SpritesLoader} and loads sprite images based on the specified planet type.
+     * <p>
+     * Depending on the identifier passed, the appropriate tileset creator method is called.
+     * </p>
+     *
+     * @param planetTypeIds the identifier representing the planet type
+     */
+    public SpritesLoader(int planetTypeIds) {
+        switch (planetTypeIds) {
+            case 1:
+                rockyPlanetTilesetCreator();
+                break;
+            case 2:
+                desertPlanetTilesetCreator();
+                break;
+            case 3:
+                volcanicPlanetTilesetCreator();
+                break;
+            case 4:
+                gardenPlanetTilesetCreator();
+                break;
+            case 5:
+                icyPlanetTilesetCreator();
+                break;
+        }
+        tilesImages = new Image[]{skyTileImage, surfaceTileImage, crustTileImage, bedrockTileImage};
+    }
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Loads an image resource from the given path using the class loader.
+     *
+     * @param path the resource path to the image file
+     * @return the loaded {@code Image} if successful; {@code null} otherwise
+     */
+    private Image loadImage(String path) {
+        try {
+            return ImageIO.read(getClass().getResource(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-	public void volcanicPlanetTilesetCreator() {
-		try {
-			skyTileImage = ImageIO.read(new File("src/sprites/VolcanicSkyTile.png"));
-			surfaceTileImage = ImageIO.read(new File("src/sprites/VolcanicSurfaceTile.png"));
-			crustTileImage =  ImageIO.read(new File("src/sprites/VolcanicCrustTile.png"));
-			bedrockTileImage = ImageIO.read(new File("src/sprites/BedrockTile.png"));
+    /**
+     * Loads sprite images for the rocky planet tileset.
+     */
+    public void rockyPlanetTilesetCreator() {
+        skyTileImage = loadImage("/sprites/RockySkyTile.png");
+        surfaceTileImage = loadImage("/sprites/RockySurfaceTile.png");
+        crustTileImage = loadImage("/sprites/RockyCrustTile.png");
+        bedrockTileImage = loadImage("/sprites/BedrockTile.png");
+    }
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Loads sprite images for the desert planet tileset.
+     */
+    public void desertPlanetTilesetCreator() {
+        skyTileImage = loadImage("/sprites/DesertSkyTile.png");
+        surfaceTileImage = loadImage("/sprites/DesertSurfaceTile.png");
+        crustTileImage = loadImage("/sprites/DesertCrustTile.png");
+        bedrockTileImage = loadImage("/sprites/BedrockTile.png");
+    }
 
-	public void gardenPlanetTilesetCreator() {
-		try {
-			skyTileImage = ImageIO.read(new File("src/sprites/SkyTile.png"));
-			surfaceTileImage = ImageIO.read(new File("src/sprites/GardenSurfaceTile.png"));
-			crustTileImage =  ImageIO.read(new File("src/sprites/GardenCrustTile.png"));
-			bedrockTileImage = ImageIO.read(new File("src/sprites/BedrockTile.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Loads sprite images for the volcanic planet tileset.
+     */
+    public void volcanicPlanetTilesetCreator() {
+        skyTileImage = loadImage("/sprites/VolcanicSkyTile.png");
+        surfaceTileImage = loadImage("/sprites/VolcanicSurfaceTile.png");
+        crustTileImage = loadImage("/sprites/VolcanicCrustTile.png");
+        bedrockTileImage = loadImage("/sprites/BedrockTile.png");
+    }
 
-	public void icyPlanetTilesetCreator() {
-		try {
-			surfaceTileImage = ImageIO.read(new File("src/sprites/SurfaceIceTile.png"));
-			skyTileImage = ImageIO.read(new File("src/sprites/ColdSkyTile.png"));
-			crustTileImage =  ImageIO.read(new File("src/sprites/DeepIceTile.png"));
-			bedrockTileImage = ImageIO.read(new File("src/sprites/BedrockTile.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public Image[] getTilesImages() {
-		return tilesImages;		
-	}
-	
-	public static void main(String[] args) {
-	    int testPlanetTypeId = 4; // Puoi cambiare questo valore per testare diversi tipi di pianeta
+    /**
+     * Loads sprite images for the garden planet tileset.
+     */
+    public void gardenPlanetTilesetCreator() {
+        skyTileImage = loadImage("/sprites/SkyTile.png");
+        surfaceTileImage = loadImage("/sprites/GardenSurfaceTile.png");
+        crustTileImage = loadImage("/sprites/GardenCrustTile.png");
+        bedrockTileImage = loadImage("/sprites/BedrockTile.png");
+    }
 
-	    SpritesLoader loader = new SpritesLoader(testPlanetTypeId);
+    /**
+     * Loads sprite images for the icy planet tileset.
+     */
+    public void icyPlanetTilesetCreator() {
+        skyTileImage = loadImage("/sprites/ColdSkyTile.png");
+        surfaceTileImage = loadImage("/sprites/SurfaceIceTile.png");
+        crustTileImage = loadImage("/sprites/DeepIceTile.png");
+        bedrockTileImage = loadImage("/sprites/BedrockTile.png");
+    }
 
-	    System.out.println("Tileset caricato per il tipo di pianeta ID: " + testPlanetTypeId);
+    /**
+     * Retrieves the array of loaded tile images.
+     *
+     * @return an array of {@code Image} objects representing the tile images
+     */
+    public Image[] getTilesImages() {
+        return tilesImages;
+    }
 
-	    // Controllo se le immagini sono state caricate
-	    for (int i = 0; i < loader.tilesImages.length; i++) {
-	        System.out.println("Tile " + i + ": " + (loader.tilesImages[i] != null ? "Caricata" : "Non caricata"));
-	    }
-	}
+    /**
+     * A simple test driver for the {@code SpritesLoader} class.
+     * <p>
+     * This main method instantiates a {@code SpritesLoader} for a test planet type and
+     * prints out whether each tile image was successfully loaded.
+     * </p>
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
+        int testPlanetTypeId = 4; // Change this value to test different planet types
+        SpritesLoader loader = new SpritesLoader(testPlanetTypeId);
 
+        System.out.println("Tileset loaded for planet type ID: " + testPlanetTypeId);
+        // Check if the images were loaded
+        for (int i = 0; i < loader.tilesImages.length; i++) {
+            System.out.println("Tile " + i + ": " + (loader.tilesImages[i] != null ? "Loaded" : "Not loaded"));
+        }
+    }
 }
